@@ -1,20 +1,14 @@
-Product.delete_all
-Review.delete_all
+muse = Artist.create( name: 'Muse', label: 'Warner Bros.')
+black = muse.albums.create( name: 'Black Holes and Revelations', release_date: '03/07/2006' )
 
-Product.create!([
-  {id: 1, name: "Nintendo Wii U Premium", price: 250, active: true},
-  {id: 2, name: "XBox 360 250GB", price: 250, active: true},
-  {id: 3, name: "Playstation 3 500 GB", price: 239.95, active: true},
-  {id: 4, name: "Nintendo Wii", price: 99.95, active: true},
-  {id: 5, name: "Nintendo 3DS", price: 174.95, active: true}
-])
+resistance = muse.albums.create( name: 'The Resistance', release_date: '11/09/2009' )
+["Take a Bow", "Starlight", "Supermassive Black Hole", "Map of the Problematique", "Soldier's Poem", "Invincible", "Assassin", "Exo-Politics", "City of Delusion", "Hoodoo", "Knights of Cydonia"].each do |song|
+  resistance.songs.create( name: song, release_date: resistance.release_date, lyrics: '...' )
+end
 
-Review.create!([
-  {id: 1, product_id: 1, user: "Bob", rating: 3, body: "dated graphics.  Overpriced.  However, the games are awesome."},
-  {id: 2, product_id: 1, user: "Rich", rating: 4, body: "MARIO!  'nuff Said"},
-  {id: 3, product_id: 2, user: "James", rating: 5, body: "Excellent value for the money."},
-  {id: 4, product_id: 2, user: "Alison", rating: 5, body: "Love it!"},
-  {id: 5, product_id: 3, user: "James", rating: 4, body: "Bigger hard drive then my XBox 360.  Weak user interface though."},
-  {id: 6, product_id: 4, user: "Kay", rating: 1, body: "Extremely dated.  Don't buy.  Will be discontinued soon."},
-  {id: 7, product_id: 5, user: "Jed", rating: 4, body: "Awesome handheld system, but a bit overpriced."}
-])
+red = Artist.create( name: 'Red Hot Chili Peppers', label: 'EMI')
+californication = red.albums.create( name: 'Californication', release_date: '08/06/1999' )
+
+["Around the World" , "Parallel Universe", "Scar Tissue", "Otherside", "Get on Top" , "Californication", "Easily" , "Porcelain", "Emit Remmus", "I Like Dirt", "This Velvet Glove", "Savior" , "Purple Stain" , "Right on Time", "Road Trippin"].each do |song|
+  californication.songs.create( name: song, release_date: californication.release_date, lyrics: '...' )
+end

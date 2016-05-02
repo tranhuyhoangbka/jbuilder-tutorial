@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :artists, only: [:index], defaults: {format: :json}
   resources :products, only: [:index], defaults: {format: :json}
 
   # The priority is based upon order of creation: first created -> highest priority.
