@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160502024543) do
+ActiveRecord::Schema.define(version: 20160502042550) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -23,12 +23,39 @@ ActiveRecord::Schema.define(version: 20160502024543) do
 
   add_index "albums", ["artist_id"], name: "index_albums_on_artist_id"
 
+  create_table "articles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "content"
+    t.integer  "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "articles", ["author_id"], name: "index_articles_on_author_id"
+
   create_table "artists", force: :cascade do |t|
     t.string   "name"
     t.string   "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "authors", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "author_id"
+    t.integer  "article_id"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["article_id"], name: "index_comments_on_article_id"
+  add_index "comments", ["author_id"], name: "index_comments_on_author_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
