@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :articles, only: [:show], defaults: {format: :json}
+
   resources :artists, only: [:index], defaults: {format: :json}
   resources :products, only: [:index], defaults: {format: :json}
 
